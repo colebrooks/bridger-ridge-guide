@@ -1,5 +1,23 @@
 {
   "dependencies": {
     "cesium": "^1.124.0"
-  }
+  },
+  "name": "bridger-ridge-guide",
+  "version": "0.0.1",
+  "description": "3D guide of routes on the Bridger Bowl ridge",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colebrooks/bridger-ridge-guide.git"
+  },
+  "author": "Cole Brooks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colebrooks/bridger-ridge-guide/issues"
+  },
+  "homepage": "https://github.com/colebrooks/bridger-ridge-guide#readme"
 }
