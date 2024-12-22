@@ -1,14 +1,13 @@
 {
-  "dependencies": {
-    "cesium": "^1.124.0"
-  },
   "name": "bridger-ridge-guide",
   "version": "0.0.1",
   "description": "3D guide of routes on the Bridger Bowl ridge",
+  "private": "true",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack serve --config webpack.config.js",
+    "start:built": "npx http-server -a localhost -p 8080 dist/"
   },
   "repository": {
     "type": "git",
@@ -19,5 +18,17 @@
   "bugs": {
     "url": "https://github.com/colebrooks/bridger-ridge-guide/issues"
   },
-  "homepage": "https://github.com/colebrooks/bridger-ridge-guide#readme"
+  "homepage": "https://github.com/colebrooks/bridger-ridge-guide#readme",
+  "dependencies": {
+    "cesium": "^1.124.0"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.3",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.0"
+  }
 }
