@@ -1,4 +1,4 @@
-import { Cartesian3, Ion, Math as CesiumMath, Terrain, CesiumWidget, Polyline, PolylineCollection } from 'cesium';
+import { Cesium, Cartesian3, Ion, Math as CesiumMath, Terrain, CesiumWidget, ImageryLayer} from 'cesium';
 import "cesium/Build/Cesium/Widgets/widgets.css";
 
 // Your access token can be found at: https://ion.cesium.com/tokens.
@@ -20,7 +20,7 @@ class Map {
         this.pitch = pitch;
         this.map = new CesiumWidget('cesiumContainer', {
           terrain: Terrain.fromWorldTerrain(),
-        });    
+        });
 
         this.map.camera.flyTo({
           destination: Cartesian3.fromDegrees(...pos),
@@ -29,6 +29,10 @@ class Map {
             pitch: CesiumMath.toRadians(pitch),
           }
         });
+    }
+
+    draw_route(route) {
+        // TODO: Take route and draw PolyLine from its path property
     }
 }
 
