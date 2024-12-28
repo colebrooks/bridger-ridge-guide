@@ -1,4 +1,4 @@
-import { Cesium, Cartesian3, Ion, Math as CesiumMath, Terrain, CesiumWidget, ImageryLayer} from 'cesium';
+import { Cartesian3, Ion, Math as CesiumMath, Terrain, CesiumWidget } from 'cesium';
 import "cesium/Build/Cesium/Widgets/widgets.css";
 
 // Your access token can be found at: https://ion.cesium.com/tokens.
@@ -18,17 +18,21 @@ class Map {
         this.pos = pos;
         this.heading = heading;
         this.pitch = pitch;
+    }
+
+    draw() {
         this.map = new CesiumWidget('cesiumContainer', {
           terrain: Terrain.fromWorldTerrain(),
         });
 
         this.map.camera.flyTo({
-          destination: Cartesian3.fromDegrees(...pos),
+          destination: Cartesian3.fromDegrees(...this.pos),
           orientation: {
-            heading: CesiumMath.toRadians(heading),
-            pitch: CesiumMath.toRadians(pitch),
+            heading: CesiumMath.toRadians(this.heading),
+            pitch: CesiumMath.toRadians(this.pitch),
           }
         });
+
     }
 
     draw_route(route) {
