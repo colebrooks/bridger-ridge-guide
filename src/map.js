@@ -21,7 +21,7 @@ class Map {
     }
 
     draw() {
-        this.map = new CesiumWidget('cesiumContainer', {
+        this.map = new CesiumWidget('mapContainer', {
           terrain: Terrain.fromWorldTerrain(),
         });
 
