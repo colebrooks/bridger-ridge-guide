@@ -1,4 +1,4 @@
-import { Cartesian3, Ion, Math as CesiumMath, Terrain, CesiumWidget } from 'cesium';
+import { Cartographic, Cartesian3, Ion, Math as CesiumMath, Terrain, CesiumWidget } from 'cesium';
 import "cesium/Build/Cesium/Widgets/widgets.css";
 
 // Your access token can be found at: https://ion.cesium.com/tokens.
@@ -45,7 +45,9 @@ class Map {
     }
 
     getCoords(windowCoords) {
-      return this.map.scene.pickPosition(windowCoords);
+      let coords = this.map.scene.pickPosition(windowCoords);
+      let cartographic = Cartographic.fromCartesian(coords);
+      return cartographic.toString();
     }
 
     drawRoute(route) {
