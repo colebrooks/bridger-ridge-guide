@@ -23,7 +23,7 @@ class Map {
         this.#container = container;
     }
 
-    set_camera(pos, heading, pitch) {
+    setCamera(pos, heading, pitch) {
         this.#pos = pos;
         this.#heading = heading;
         this.#pitch = pitch;
@@ -44,7 +44,11 @@ class Map {
 
     }
 
-    draw_route(route) {
+    getCoords(windowCoords) {
+      return this.map.scene.pickPosition(windowCoords);
+    }
+
+    drawRoute(route) {
         // TODO: Take route and draw PolyLine from its path property
     }
 }

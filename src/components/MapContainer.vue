@@ -1,5 +1,5 @@
 <template>
-  <div id="mapContainer" @hover="mapHover"></div>
+  <div id="mapContainer" @click="getCoords"></div>
 </template>
 
 <script setup>
@@ -18,6 +18,17 @@ onMounted(() => {
   mapInstance = new Map('mapContainer')
   mapInstance.draw()
 })
+
+function getCoords(event) {
+  // TODO: Use cesium's scene.pickPosition function to get the coordinates of the cursor
+  let windowCoords = {
+    x: event.clientX,
+    y: event.clientY,
+  }
+  let mapCoords = mapInstance.getCoords(windowCoords)
+  console.log(`GOT MAP COORDS: ${mapCoords}`)
+}
+
 </script>
 
 <style scoped></style>
