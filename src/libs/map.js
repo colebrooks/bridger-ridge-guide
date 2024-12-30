@@ -14,22 +14,31 @@ class Map {
 // Bridger Bowl coords: -110.887222, 45.815556, 3500
 // Bridger Bowl heading: 270.0
 // Bridger Bowl pitch: -25.0
-    constructor(pos, heading, pitch) {
-        this.pos = pos;
-        this.heading = heading;
-        this.pitch = pitch;
+  #pos = [-110.887222, 45.815556, 3500];
+  #heading = 270.0;
+  #pitch = -25.0;
+  #container = 'mapContainer';
+
+    constructor(container='mapContainer') {
+        this.#container = container;
+    }
+
+    set_camera(pos, heading, pitch) {
+        this.#pos = pos;
+        this.#heading = heading;
+        this.#pitch = pitch;
     }
 
     draw() {
-        this.map = new CesiumWidget('mapContainer', {
+        this.map = new CesiumWidget(this.#container, {
           terrain: Terrain.fromWorldTerrain(),
         });
 
         this.map.camera.flyTo({
-          destination: Cartesian3.fromDegrees(...this.pos),
+          destination: Cartesian3.fromDegrees(...this.#pos),
           orientation: {
-            heading: CesiumMath.toRadians(this.heading),
-            pitch: CesiumMath.toRadians(this.pitch),
+            heading: CesiumMath.toRadians(this.#heading),
+            pitch: CesiumMath.toRadians(this.#pitch),
           }
         });
 
