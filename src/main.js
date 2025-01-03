@@ -2,7 +2,9 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
+import VueFeather from 'vue-feather'
 
-import { Map } from './libs/map'
+const app = createApp(App)
+app.component(VueFeather.name, VueFeather)
 
-createApp(App).mount('#app')
+app.mount('#app')

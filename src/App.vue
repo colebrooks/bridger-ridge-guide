@@ -1,11 +1,11 @@
 <script setup>
 import MapContainer from './components/MapContainer.vue'
+import MenuBar from './components/MenuBar.vue';
 </script>
 
 <template>
   <header>
-    <div class="wrapper">
-    </div>
+    <MenuBar />
   </header>
 
   <main>

@@ -1,4 +1,4 @@
-import { Cartographic, Cartesian3, Ion, Math as CesiumMath, Terrain, CesiumWidget } from 'cesium';
+import { Cartographic, Cartesian3, Ion, Math as CesiumMath, Terrain, CesiumWidget, Cartesian2 } from 'cesium';
 import "cesium/Build/Cesium/Widgets/widgets.css";
 
 // Your access token can be found at: https://ion.cesium.com/tokens.
@@ -44,10 +44,37 @@ class Map {
 
     }
 
+    resetCamera() {
+      this.map.camera.flyTo({
+        destination: Cartesian3.fromDegrees(...this.#pos),
+        orientation: {
+          heading: CesiumMath.toRadians(this.#heading),
+          pitch: CesiumMath.toRadians(this.#pitch),
+        }
+      });
+    }
+
     getCoords(windowCoords) {
+      // TODO: Handle error when pickPosition returns undefined
       let coords = this.map.scene.pickPosition(windowCoords);
-      let cartographic = Cartographic.fromCartesian(coords);
-      return cartographic.toString();
+      return coords.toString();
+    }
+
+    toDegrees(cartesian) {
+      let cartographic = Cartographic.fromCartesian(cartesian);
+      const longitudeInDegrees = CesiumMath.toDegrees(cartographic.longitude);
+      const latitudeInDegrees = CesiumMath.toDegrees(cartographic.latitude);
+      return [latitudeInDegrees, longitudeInDegrees];
+    }
+
+    drawLine(coords) {
+      let line = this.map.entities.add({
+        polyline: {
+          positions: Cartesian3.fromDegreesArray(coords),
+          width: 5,
+          material: CesiumMath.Color.BLUE,
+        },
+      });
     }
 
     drawRoute(route) {
