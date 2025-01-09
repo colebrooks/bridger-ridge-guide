@@ -25,6 +25,7 @@ function getCoords(event) {
     y: event.clientY,
   }
   let mapCoords = mapInstance.getCoords(windowCoords)
+  console.log(`GOT MAP COORDS: ${JSON.stringify(mapCoords)}`)
 }
 
 </script>

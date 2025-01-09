@@ -1,20 +1,14 @@
 <template>
   <div id="menuBar`">
-    <IconButton icon="plus-circle" @onClick="addRoute"/>
+    <IconButton icon="plus-circle" @onClick="$emit('startRecording')"/>
+    <IconButton icon="pen-tool" @onClick="$emit('drawRoute')"/>
   </div>
 </template>
 
 <script setup>
 import IconButton from './common/IconButton.vue';
 
-let recording = false;
-
-function addRoute() {
-  recording = !recording;
-  console.log('Recording:', recording);
-  // TODO: Listen on cesium viewer for clicks to get the coordinates
-  // TODO: Consider drawing a line instead of using individual clicks
-}
+defineEmits(['startRecording', 'drawRoute']);
 
 </script>
 
