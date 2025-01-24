@@ -1,5 +1,5 @@
 <template>
-  <div id="mapContainer" @click="getCoords"></div>
+  <div id="mapContainer" @click="clickHandler"></div>
 </template>
 
 <script setup>
@@ -19,7 +19,19 @@ onMounted(() => {
   mapInstance.draw()
 })
 
+function clickHandler(event) {
+  let windowCoords = {
+    x: event.clientX,
+    y: event.clientY,
+  }
+  const routeId = mapInstance.pickRoute(windowCoords)
+  if (routeId) {
+    console.log(`GOT ROUTE: ${routeId}`)
+  }
+}
+
 function getCoords(event) {
+  // TODO: Only call this on click when recording is active via the button
   let windowCoords = {
     x: event.clientX,
     y: event.clientY,

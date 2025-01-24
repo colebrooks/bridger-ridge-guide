@@ -81,6 +81,8 @@ class Map {
     }
 
     drawLine(coords) {
+      // TODO: Keep track of the returned line in a collection
+      // TODO: Listen for click events on the line: https://cesium.com/learn/cesiumjs-learn/cesiumjs-creating-entities/#picking
       let line = this.map.entities.add({
         polyline: {
           positions: coords,
@@ -88,6 +90,7 @@ class Map {
           material: Cesium.Color.AQUA,
         },
       });
+      return line.id
     }
 
     drawSuperCouloir() {
@@ -106,6 +109,17 @@ class Map {
       }
 
       this.drawLine(cart_coords);
+    }
+
+    pickRoute(windowPosition) {
+      let picked = this.map.scene.pick(windowPosition, 10, 10);
+      if (Cesium.defined(picked)) {
+        const id = Cesium.defaultValue(picked.id, picked.primitive.id);
+        if (id instanceof Cesium.Entity) {
+          return id.id;
+        }
+      }
+      return undefined;
     }
 }
 
