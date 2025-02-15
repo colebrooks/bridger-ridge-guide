@@ -1,14 +1,15 @@
 <template>
   <div id="menuBar`">
-    <IconButton icon="plus-circle" @onClick="$emit('startRecording')"/>
-    <IconButton icon="pen-tool" @onClick="$emit('drawRoute')"/>
+    <IconButton id="startRecording" icon="plus-circle" @onClick="$emit('startRecording')"/>
+    <IconButton id="drawRoute" icon="pen-tool" @onClick="$emit('drawRoute')"/>
+    <IconButton id="openRouteDescription" icon="align-center" @onClick="$emit('openRouteDescription')"/>
   </div>
 </template>
 
 <script setup>
 import IconButton from './common/IconButton.vue';
 
-defineEmits(['startRecording', 'drawRoute']);
+defineEmits(['startRecording', 'drawRoute', 'openRouteDescription']);
 
 </script>
 
@@ -25,5 +26,8 @@ defineEmits(['startRecording', 'drawRoute']);
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+}
+#drawRoute, #openRouteDescription {
+  margin-left: 10px;
 }
 </style>

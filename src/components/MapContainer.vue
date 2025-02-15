@@ -42,4 +42,9 @@ function getCoords(event) {
 
 </script>
 
-<style scoped></style>
+<style scoped>
+  #mapContainer {
+    width: 100%;
+    height: 100%;
+  }
+</style>
